@@ -64,7 +64,7 @@ coverage.xml
 .hypothesis/
 
 # Environments
-.env
+online_shop/.env
 env/
 
 # mkdocs documentation
