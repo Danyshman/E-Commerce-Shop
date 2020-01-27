@@ -1,10 +1,10 @@
 ----------------------------------------------------PROJECT DESCRIPTION------------------------------------------------------
 
-                                                     E-Commerce Website
-                                                  
-                                          Online Shop to sell/buy products, creat/read blogs.
+                                      E-Commerce Website
+                                                 
+                        Online Shop to sell/buy products, creat/read blogs.
 
-                                                MAIN FUNCTIONALITY OF WEBSITE
+                                MAIN FUNCTIONALITY OF WEBSITE
                                                 
 AS CLIENT
 1) Login/Register
@@ -24,7 +24,7 @@ Main functionality of website for vendors
 3) Reset Password
 
 
-                                        TECHONOLOGIES THAT WAS USED
+                                    TECHONOLOGIES THAT WAS USED
 * Python
 * Django
 * Django Rest Framework
