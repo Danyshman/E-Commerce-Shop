@@ -18,7 +18,6 @@ AS CLIENT
 9) Leave comment to a product
 
 AS VENDOR
-Main functionality of website for vendors
 1) Login/Register
 2) Creat products to sell
 3) Reset Password
