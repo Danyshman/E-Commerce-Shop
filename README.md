@@ -1,9 +1,11 @@
---------------------------------------------------PROJECT DESCRIPTION------------------------------------------------------------------
-E-Commerce Online Website
+----------------------------------------------------PROJECT DESCRIPTION------------------------------------------------------
 
-Online Shop to sell/buy products, creat/read blogs.
+                                                     E-Commerce Website
+                                                  
+                                          Online Shop to sell/buy products, creat/read blogs.
 
-                                          MAIN FUNCTIONALITY OF WEBSITE
+                                                MAIN FUNCTIONALITY OF WEBSITE
+                                                
 AS CLIENT
 1) Login/Register
 2) Search products by name, category etc
