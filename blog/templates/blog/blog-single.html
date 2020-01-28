@@ -7,7 +7,7 @@
                 <li class="nav-item"><a class="nav-link" href="{% url 'product:shop_page'%}">Shop</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Account</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Pages</a></li>
-                <li class="nav-item active"><a class="nav-link" href="#">Blog</a></li>
+                <li class="nav-item active"><a class="nav-link" href="{% url 'blog:detail_blog' blog_detail.id%}">Blog</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Docs / Components</a></li>
 </ul>
 {% endblock %}
@@ -32,7 +32,7 @@
 
                         </li>
 
-                        <li class="breadcrumb-item text-nowrap active" aria-current="page">Single post</li>
+                        <li class="breadcrumb-item text-nowrap active" aria-current="page">{{blog_detail.title}}</li>
 
                     </ol>
 
@@ -42,7 +42,7 @@
 
             <div class="order-lg-1 pr-lg-4 text-center text-lg-left">
 
-                <h1 class="h3 mb-0">Single post</h1>
+                <h1 class="h3 mb-0">{{ blog_detail.title }}</h1>
 
             </div>
 
@@ -66,7 +66,7 @@
 
                         <a class="blog-entry-meta-link" href="#">
 
-                            <div class="blog-entry-author-ava"><img src="img/blog/meta/02.jpg" alt="Cynthia Gomez"></div>Cynthia Gomez</a><span class="blog-entry-meta-divider"></span><a class="blog-entry-meta-link" href="#">Jul 17</a></div>
+                            <div class="blog-entry-author-ava"><img src="{% static 'img/blog/meta/02.jpg' %}" alt="Cynthia Gomez"></div>{{ blog_detail.author.username }}</a><span class="blog-entry-meta-divider"></span><a class="blog-entry-meta-link" href="#">Jul 17</a></div>
 
                     <div class="font-size-sm mb-2"><a class="blog-entry-meta-link text-nowrap" href="#comments" data-scroll><i class="czi-message"></i>3</a></div>
 
@@ -76,13 +76,13 @@
 
                 <div class="cz-gallery row pb-2">
 
-                    <div class="col-sm-8"><a class="gallery-item rounded-lg mb-grid-gutter" href="img/blog/single/01.jpg" data-sub-html="&lt;h6 class=&quot;font-size-sm text-light&quot;&gt;Gallery image caption #1&lt;/h6&gt;"><img src="img/blog/single/th01.jpg" alt="Gallery image"><span class="gallery-item-caption">Gallery image caption #1</span></a></div>
+                    <div class="col-sm-8"><a class="gallery-item rounded-lg mb-grid-gutter" href="{{detail_blog.main_img}}" data-sub-html="&lt;h6 class=&quot;font-size-sm text-light&quot;&gt;Gallery image caption #1&lt;/h6&gt;"><img src="{% static 'img/blog/single/th01.jpg' %}" alt="Gallery image"><span class="gallery-item-caption">Gallery image caption #1</span></a></div>
 
-                    <div class="col-sm-4"><a class="gallery-item rounded-lg mb-grid-gutter" href="img/blog/single/02.jpg" data-sub-html="&lt;h6 class=&quot;font-size-sm text-light&quot;&gt;Gallery image caption #2&lt;/h6&gt;"><img src="img/blog/single/th02.jpg" alt="Gallery image"><span class="gallery-item-caption">Gallery image caption #2</span></a>
+                    <div class="col-sm-4"><a class="gallery-item rounded-lg mb-grid-gutter" href="{{detail_blog.img2}}" data-sub-html="&lt;h6 class=&quot;font-size-sm text-light&quot;&gt;Gallery image caption #2&lt;/h6&gt;"><img src="{% static 'img/blog/single/th02.jpg' %}" alt="Gallery image"><span class="gallery-item-caption">Gallery image caption #2</span></a>
 
                         <a
 
-                            class="gallery-item rounded-lg mb-grid-gutter" href="img/blog/single/03.jpg" data-sub-html="&lt;h6 class=&quot;font-size-sm text-light&quot;&gt;Gallery image caption #3&lt;/h6&gt;"><img src="img/blog/single/th03.jpg" alt="Gallery image"><span class="gallery-item-caption">Gallery image caption #3</span></a>
+                            class="gallery-item rounded-lg mb-grid-gutter" href="{{detail_blog.img3}}" data-sub-html="&lt;h6 class=&quot;font-size-sm text-light&quot;&gt;Gallery image caption #3&lt;/h6&gt;"><img src="{% static 'img/blog/single/th03.jpg' %}" alt="Gallery image"><span class="gallery-item-caption">Gallery image caption #3</span></a>
 
                     </div>
 
@@ -90,15 +90,9 @@
 
                 <!-- Post content-->
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+                <p>{{ blog_detail.body }}</p>
 
-                    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minima veniam,
-
-                    quis nostrum exercitationem occaecat cupidatat non proident.</p>
-
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-
-                    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>{{ blog_detail.body }}</p>
 
                 <blockquote class="cz-testimonial my-4 pt-4 pb-2">
 
@@ -112,7 +106,7 @@
 
                     <footer class="d-flex justify-content-center pt-4">
 
-                        <div class="media align-items-center"><img class="rounded" width="50" src="img/testimonials/01.jpg" alt="Mary Grant" />
+                        <div class="media align-items-center"><img class="rounded" width="50" src="{% static 'img/testimonials/01.jpg' %}" alt="Mary Grant" />
 
                             <div class="media-body pl-3">
 
@@ -150,11 +144,11 @@
 
                 <!-- Post navigation-->
 
-                <nav class="entry-navigation" aria-label="Post navigation"><a class="entry-navigation-link" href="#" data-toggle="popover" data-placement="top" data-trigger="hover" data-html="true" data-content="&lt;div class=&quot;media align-items-center&quot;&gt;&lt;img src=&quot;img/blog/navigation/01.jpg&quot; width=&quot;60&quot; class=&quot;mr-3&quot; alt=&quot;Post thumb&quot;&gt;&lt;div class=&quot;media-body&quot;&gt;&lt;h6  class=&quot;font-size-sm font-weight-semibold mb-0&quot;&gt;How to choose perfect shoes for running&lt;/h6&gt;&lt;span class=&quot;d-block font-size-xs text-muted&quot;&gt;by Susan Mayer&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;"><i class="czi-arrow-left mr-2"></i><span class="d-none d-sm-inline">Prev post</span></a>
+                <nav class="entry-navigation" aria-label="Post navigation"><a class="entry-navigation-link" href="#" data-toggle="popover" data-placement="top" data-trigger="hover" data-html="true" data-content="&lt;div class=&quot;media align-items-center&quot;&gt;&lt;img src=&quot;{% static 'img/blog/navigation/01.jpg' %}&quot; width=&quot;60&quot; class=&quot;mr-3&quot; alt=&quot;Post thumb&quot;&gt;&lt;div class=&quot;media-body&quot;&gt;&lt;h6  class=&quot;font-size-sm font-weight-semibold mb-0&quot;&gt;How to choose perfect shoes for running&lt;/h6&gt;&lt;span class=&quot;d-block font-size-xs text-muted&quot;&gt;by Susan Mayer&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;"><i class="czi-arrow-left mr-2"></i><span class="d-none d-sm-inline">Prev post</span></a>
 
                     <a
 
-                        class="entry-navigation-link" href="blog-list.html"><i class="czi-view-list mr-2"></i><span class="d-none d-sm-inline">All posts</span></a><a class="entry-navigation-link" href="#" data-toggle="popover" data-placement="top" data-trigger="hover" data-html="true" data-content="&lt;div class=&quot;media align-items-center&quot;&gt;&lt;img src=&quot;img/blog/navigation/02.jpg&quot; width=&quot;60&quot; class=&quot;mr-3&quot; alt=&quot;Post thumb&quot;&gt;&lt;div class=&quot;media-body&quot;&gt;&lt;h6  class=&quot;font-size-sm font-weight-semibold mb-0&quot;&gt;Factors behind smart watches popularity&lt;/h6&gt;&lt;span class=&quot;d-block font-size-xs text-muted&quot;&gt;by Logan Coleman&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;"><span class="d-none d-sm-inline">Next post</span><i class="czi-arrow-right ml-2"></i></a></nav>
+                        class="entry-navigation-link" href="blog-list.html"><i class="czi-view-list mr-2"></i><span class="d-none d-sm-inline">All posts</span></a><a class="entry-navigation-link" href="#" data-toggle="popover" data-placement="top" data-trigger="hover" data-html="true" data-content="&lt;div class=&quot;media align-items-center&quot;&gt;&lt;img src=&quot;{% static 'img/blog/navigation/02.jpg' %}&quot; width=&quot;60&quot; class=&quot;mr-3&quot; alt=&quot;Post thumb&quot;&gt;&lt;div class=&quot;media-body&quot;&gt;&lt;h6  class=&quot;font-size-sm font-weight-semibold mb-0&quot;&gt;Factors behind smart watches popularity&lt;/h6&gt;&lt;span class=&quot;d-block font-size-xs text-muted&quot;&gt;by Logan Coleman&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;"><span class="d-none d-sm-inline">Next post</span><i class="czi-arrow-right ml-2"></i></a></nav>
 
                 <!-- Comments-->
 
@@ -164,7 +158,7 @@
 
                     <!-- comment-->
 
-                    <div class="media py-4 border-bottom"><img class="rounded-circle" width="50" src="img/testimonials/04.jpg" alt="Laura Willson" />
+                    <div class="media py-4 border-bottom"><img class="rounded-circle" width="50" src="{% static 'img/testimonials/04.jpg' %}" alt="Laura Willson" />
 
                         <div class="media-body pl-3">
 
@@ -180,7 +174,7 @@
 
                             <!-- comment reply-->
 
-                            <div class="media border-top pt-4 mt-4"><img class="rounded-circle" width="50" src="img/testimonials/03.jpg" alt="Michael Davis" />
+                            <div class="media border-top pt-4 mt-4"><img class="rounded-circle" width="50" src="{% static 'img/testimonials/03.jpg' %}" alt="Michael Davis" />
 
                                 <div class="media-body pl-3">
 
@@ -202,7 +196,7 @@
 
                     <!-- comment-->
 
-                    <div class="media py-4"><img class="rounded-circle" width="50" src="img/testimonials/02.jpg" alt="Benjamin Miller" />
+                    <div class="media py-4"><img class="rounded-circle" width="50" src="{% static 'img/testimonials/02.jpg' %}" alt="Benjamin Miller" />
 
                         <div class="media-body pl-3">
 
@@ -226,7 +220,7 @@
 
                         <div class="card-body">
 
-                            <div class="media"><img class="rounded-circle" width="50" src="img/testimonials/01.jpg" alt="Mary Alice" />
+                            <div class="media"><img class="rounded-circle" width="50" src="{% static 'img/testimonials/01.jpg' %}" alt="Mary Alice" />
 
                                 <form class="media-body needs-validation ml-3" novalidate>
 
@@ -296,7 +290,7 @@
 
                             <h3 class="widget-title">Trending posts</h3>
 
-                            <div class="media align-items-center mb-3"><a href="blog-single.html"><img class="rounded" src="img/blog/widget/01.jpg" width="64" alt="Post image"></a>
+                            <div class="media align-items-center mb-3"><a href="blog-single.html"><img class="rounded" src="{% static 'img/blog/widget/01.jpg' %}" width="64" alt="Post image"></a>
 
                                 <div class="media-body pl-3">
 
@@ -306,7 +300,7 @@
 
                             </div>
 
-                            <div class="media align-items-center mb-3"><a href="blog-single.html"><img class="rounded" src="img/blog/widget/02.jpg" width="64" alt="Post image"></a>
+                            <div class="media align-items-center mb-3"><a href="blog-single.html"><img class="rounded" src="{% static 'img/blog/widget/02.jpg' %}" width="64" alt="Post image"></a>
 
                                 <div class="media-body pl-3">
 
@@ -316,7 +310,7 @@
 
                             </div>
 
-                            <div class="media align-items-center"><a href="blog-single.html"><img class="rounded" src="img/blog/widget/03.jpg" width="64" alt="Post image"></a>
+                            <div class="media align-items-center"><a href="blog-single.html"><img class="rounded" src="{% static 'img/blog/widget/03.jpg' %}" width="64" alt="Post image"></a>
 
                                 <div class="media-body pl-3">
 
@@ -342,7 +336,7 @@
 
                         <!-- Promo banner-->
 
-                        <div class="bg-size-cover bg-position-center rounded-lg py-5" style="background-image: url(img/blog/banner-bg.jpg);">
+                        <div class="bg-size-cover bg-position-center rounded-lg py-5" style="background-image: url({% static 'img/blog/banner-bg.jpg' %});">
 
                             <div class="py-5 px-4 text-center">
 
@@ -378,7 +372,7 @@
 
                     <!-- article-->
 
-                    <article><a class="blog-entry-thumb mb-3" href="#"><img class="rounded" src="img/blog/03.jpg" alt="Post"></a>
+                    <article><a class="blog-entry-thumb mb-3" href="#"><img class="rounded" src="{% static 'img/blog/03.jpg' %}" alt="Post"></a>
 
                         <div class="d-flex align-items-center font-size-sm mb-2"><a class="blog-entry-meta-link" href="#">by Rafael Marquez</a><span class="blog-entry-meta-divider"></span><a class="blog-entry-meta-link" href="#">Sep 16</a></div>
 
@@ -388,7 +382,7 @@
 
                     <!-- article-->
 
-                    <article><a class="blog-entry-thumb mb-3" href="#"><img class="rounded" src="img/blog/04.jpg" alt="Post"></a>
+                    <article><a class="blog-entry-thumb mb-3" href="#"><img class="rounded" src="{% static 'img/blog/04.jpg' %}" alt="Post"></a>
 
                         <div class="d-flex align-items-center font-size-sm mb-2"><a class="blog-entry-meta-link" href="#">by Emma Gallaher</a><span class="blog-entry-meta-divider"></span><a class="blog-entry-meta-link" href="#">Sep 5</a></div>
 
@@ -398,7 +392,7 @@
 
                     <!-- article-->
 
-                    <article><a class="blog-entry-thumb mb-3" href="#"><img class="rounded" src="img/blog/02.jpg" alt="Post"></a>
+                    <article><a class="blog-entry-thumb mb-3" href="#"><img class="rounded" src="{% static 'img/blog/02.jpg' %}" alt="Post"></a>
 
                         <div class="d-flex align-items-center font-size-sm mb-2"><a class="blog-entry-meta-link" href="#">by Emma Gallaher</a><span class="blog-entry-meta-divider"></span><a class="blog-entry-meta-link" href="#">Aug 28</a></div>
 
@@ -408,7 +402,7 @@
 
                     <!-- article-->
 
-                    <article><a class="blog-entry-thumb mb-3" href="#"><img class="rounded" src="img/blog/01.jpg" alt="Post"></a>
+                    <article><a class="blog-entry-thumb mb-3" href="#"><img class="rounded" src="{% static 'img/blog/01.jpg' %}" alt="Post"></a>
 
                         <div class="d-flex align-items-center font-size-sm mb-2"><a class="blog-entry-meta-link" href="#">by Emma Gallaher</a><span class="blog-entry-meta-divider"></span><a class="blog-entry-meta-link" href="#">Aug 28</a></div>
 
@@ -650,11 +644,11 @@
 
                     <div class="col-md-6 text-center text-md-left mb-4">
 
-                        <div class="text-nowrap mb-4"><a class="d-inline-block align-middle mt-n1 mr-3" href="#"><img class="d-block" width="117" src="img/footer-logo-light.png" alt="Cartzilla"/></a>
+                        <div class="text-nowrap mb-4"><a class="d-inline-block align-middle mt-n1 mr-3" href="#"><img class="d-block" width="117" src="{% static 'img/footer-logo-light.png' %}" alt="Cartzilla"/></a>
 
                             <div class="btn-group dropdown disable-autohide">
 
-                                <button class="btn btn-outline-light border-light btn-sm dropdown-toggle px-2" type="button" data-toggle="dropdown"><img class="mr-2" width="20" src="img/flags/en.png" alt="English"/>Eng / $
+                                <button class="btn btn-outline-light border-light btn-sm dropdown-toggle px-2" type="button" data-toggle="dropdown"><img class="mr-2" width="20" src="{% static 'img/flags/en.png' %}" alt="English"/>Eng / $
 
                   </button>
 
@@ -676,11 +670,11 @@
 
                                     </li>
 
-                                    <li><a class="dropdown-item pb-1" href="#"><img class="mr-2" width="20" src="img/flags/fr.png" alt="Français"/>Français</a></li>
+                                    <li><a class="dropdown-item pb-1" href="#"><img class="mr-2" width="20" src="{% static 'img/flags/fr.png' %}" alt="Français"/>Français</a></li>
 
-                                    <li><a class="dropdown-item pb-1" href="#"><img class="mr-2" width="20" src="img/flags/de.png" alt="Deutsch"/>Deutsch</a></li>
+                                    <li><a class="dropdown-item pb-1" href="#"><img class="mr-2" width="20" src="{% static 'img/flags/de.png' %}" alt="Deutsch"/>Deutsch</a></li>
 
-                                    <li><a class="dropdown-item" href="#"><img class="mr-2" width="20" src="img/flags/it.png" alt="Italiano"/>Italiano</a></li>
+                                    <li><a class="dropdown-item" href="#"><img class="mr-2" width="20" src="{% static 'img/flags/it.png' %}" alt="Italiano"/>Italiano</a></li>
 
                                 </ul>
 
@@ -714,7 +708,7 @@
 
                                 href="#"><i class="czi-instagram"></i></a><a class="social-btn sb-light sb-pinterest ml-2 mb-2" href="#"><i class="czi-pinterest"></i></a><a class="social-btn sb-light sb-youtube ml-2 mb-2" href="#"><i class="czi-youtube"></i></a></div><img
 
-                            class="d-inline-block" width="187" src="img/cards-alt.png" alt="Payment methods" />
+                            class="d-inline-block" width="187" src="{% static 'img/cards-alt.png' %}" alt="Payment methods" />
 
                     </div>
 
@@ -746,9 +740,9 @@
 
     <!-- JavaScript libraries, plugins and custom scripts-->
 
-    <script src="js/vendor.min.js"></script>
+    <script src="{% static 'js/vendor.min.js' %}" ></script>
 
-    <script src="js/theme.min.js"></script>
+    <script src="{% static 'js/theme.min.js' %}" ></script>
 
 </body>
 
