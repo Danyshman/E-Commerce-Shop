@@ -7,7 +7,7 @@
                 <li class="nav-item"><a class="nav-link" href="{% url 'product:product_list'%}">Shop</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'about_us'%}">About Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Pages</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'blog:blog_list' %}">Blog</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Docs / Components</a></li>
 </ul>
 {% endblock %}
@@ -290,31 +290,31 @@
 
                             <h3 class="widget-title">Trending posts</h3>
 
-                            <div class="media align-items-center mb-3"><a href="blog-single.html"><img class="rounded" src="{% static 'img/blog/widget/01.jpg' %}" width="64" alt="Post image"></a>
+                            <div class="media align-items-center mb-3"><a href="blog_detail.html"><img class="rounded" src="{% static 'img/blog/widget/01.jpg' %}" width="64" alt="Post image"></a>
 
                                 <div class="media-body pl-3">
 
-                                    <h6 class="blog-entry-title font-size-sm mb-0"><a href="blog-single.html">Retro Cameras are Trending. Why so Popular?</a></h6><span class="font-size-ms text-muted">by <a href='#' class='blog-entry-meta-link'>Andy Williams</a></span>
+                                    <h6 class="blog-entry-title font-size-sm mb-0"><a href="blog_detail.html">Retro Cameras are Trending. Why so Popular?</a></h6><span class="font-size-ms text-muted">by <a href='#' class='blog-entry-meta-link'>Andy Williams</a></span>
 
                                 </div>
 
                             </div>
 
-                            <div class="media align-items-center mb-3"><a href="blog-single.html"><img class="rounded" src="{% static 'img/blog/widget/02.jpg' %}" width="64" alt="Post image"></a>
+                            <div class="media align-items-center mb-3"><a href="blog_detail.html"><img class="rounded" src="{% static 'img/blog/widget/02.jpg' %}" width="64" alt="Post image"></a>
 
                                 <div class="media-body pl-3">
 
-                                    <h6 class="blog-entry-title font-size-sm mb-0"><a href="blog-single.html">New Trends in Suburban Fashion</a></h6><span class="font-size-ms text-muted">by <a href='#' class='blog-entry-meta-link'>Susan Mayer</a></span>
+                                    <h6 class="blog-entry-title font-size-sm mb-0"><a href="blog_detail.html">New Trends in Suburban Fashion</a></h6><span class="font-size-ms text-muted">by <a href='#' class='blog-entry-meta-link'>Susan Mayer</a></span>
 
                                 </div>
 
                             </div>
 
-                            <div class="media align-items-center"><a href="blog-single.html"><img class="rounded" src="{% static 'img/blog/widget/03.jpg' %}" width="64" alt="Post image"></a>
+                            <div class="media align-items-center"><a href="blog_detail.html"><img class="rounded" src="{% static 'img/blog/widget/03.jpg' %}" width="64" alt="Post image"></a>
 
                                 <div class="media-body pl-3">
 
-                                    <h6 class="blog-entry-title font-size-sm mb-0"><a href="blog-single.html">Augmented Reality - Game Changing Technology</a></h6><span class="font-size-ms text-muted">by <a href='#' class='blog-entry-meta-link'>John Doe</a></span>
+                                    <h6 class="blog-entry-title font-size-sm mb-0"><a href="blog_detail.html">Augmented Reality - Game Changing Technology</a></h6><span class="font-size-ms text-muted">by <a href='#' class='blog-entry-meta-link'>John Doe</a></span>
 
                                 </div>
 
@@ -890,19 +890,19 @@
                         <!-- Trending posts-->
                         <div class="widget mb-grid-gutter pb-grid-gutter border-bottom">
                             <h3 class="widget-title">Trending posts</h3>
-                            <div class="media align-items-center mb-3"><a href="blog-single.html"><img class="rounded" src="{% static 'img/blog/widget/01.jpg' %}" width="64" alt="Post image"></a>
+                            <div class="media align-items-center mb-3"><a href="blog_detail.html"><img class="rounded" src="{% static 'img/blog/widget/01.jpg' %}" width="64" alt="Post image"></a>
                                 <div class="media-body pl-3">
-                                    <h6 class="blog-entry-title font-size-sm mb-0"><a href="blog-single.html">Retro Cameras are Trending. Why so Popular?</a></h6><span class="font-size-ms text-muted">by <a href='#' class='blog-entry-meta-link'>Andy Williams</a></span>
+                                    <h6 class="blog-entry-title font-size-sm mb-0"><a href="blog_detail.html">Retro Cameras are Trending. Why so Popular?</a></h6><span class="font-size-ms text-muted">by <a href='#' class='blog-entry-meta-link'>Andy Williams</a></span>
                                 </div>
                             </div>
-                            <div class="media align-items-center mb-3"><a href="blog-single.html"><img class="rounded" src="{% static 'img/blog/widget/02.jpg' %}" width="64" alt="Post image"></a>
+                            <div class="media align-items-center mb-3"><a href="blog_detail.html"><img class="rounded" src="{% static 'img/blog/widget/02.jpg' %}" width="64" alt="Post image"></a>
                                 <div class="media-body pl-3">
-                                    <h6 class="blog-entry-title font-size-sm mb-0"><a href="blog-single.html">New Trends in Suburban Fashion</a></h6><span class="font-size-ms text-muted">by <a href='#' class='blog-entry-meta-link'>Susan Mayer</a></span>
+                                    <h6 class="blog-entry-title font-size-sm mb-0"><a href="blog_detail.html">New Trends in Suburban Fashion</a></h6><span class="font-size-ms text-muted">by <a href='#' class='blog-entry-meta-link'>Susan Mayer</a></span>
                                 </div>
                             </div>
-                            <div class="media align-items-center"><a href="blog-single.html"><img class="rounded" src="{% static 'img/blog/widget/03.jpg' %}" width="64" alt="Post image"></a>
+                            <div class="media align-items-center"><a href="blog_detail.html"><img class="rounded" src="{% static 'img/blog/widget/03.jpg' %}" width="64" alt="Post image"></a>
                                 <div class="media-body pl-3">
-                                    <h6 class="blog-entry-title font-size-sm mb-0"><a href="blog-single.html">Augmented Reality - Game Changing Technology</a></h6><span class="font-size-ms text-muted">by <a href='#' class='blog-entry-meta-link'>John Doe</a></span>
+                                    <h6 class="blog-entry-title font-size-sm mb-0"><a href="blog_detail.html">Augmented Reality - Game Changing Technology</a></h6><span class="font-size-ms text-muted">by <a href='#' class='blog-entry-meta-link'>John Doe</a></span>
                                 </div>
                             </div>
                         </div>

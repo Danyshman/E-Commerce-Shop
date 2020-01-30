@@ -8,7 +8,7 @@
                 <li class="nav-item"><a class="nav-link" href="{% url 'product:product_list'%}">Shop</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'about_us'%}">About Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Pages</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'blog:blog_list' %}">Blog</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Docs / Components</a></li>
 </ul>
 
@@ -316,7 +316,5 @@
     </div>
     <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted font-size-sm mr-2">Top</span><i class="btn-scroll-top-icon czi-arrow-up">   </i></a>
     <!-- JavaScript libraries, plugins and custom scripts-->
-    <script src="{% static 'js/vendor.min.js' %}" ></script>
-    <script src="{% static 'js/theme.min.js' %}" ></script>
 
 {% endblock %}

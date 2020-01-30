@@ -9,5 +9,14 @@ def detail_blog(request, id):
         context = {
             "blog_detail": blog
         }
-        return render(request, 'blog/blog-single.html', context)
+        return render(request, 'blog/blog_detail.html', context)
+
+
+def list_blog(request):
+    if request.method == 'GET':
+        query = Blog.objects.all()
+        context = {
+            "blog_list": query
+        }
+        return render(request, 'blog/blog_list.html', context)
 
