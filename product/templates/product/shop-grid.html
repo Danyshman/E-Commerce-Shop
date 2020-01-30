@@ -3,14 +3,13 @@
 
 {% block header %}
 <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="{% url 'product:index' %}">Home</a></li>
-                <li class="nav-item active"><a class="nav-link" href="{% url 'product:shop_page'%}">Shop</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Account</a></li>
+                <li class="nav-item active"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'product:product_list'%}">Shop</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'about_us'%}">About Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Pages</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Docs / Components</a></li>
 </ul>
-
 {% endblock %}
 
 {% block body %}

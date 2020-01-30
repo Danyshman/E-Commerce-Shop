@@ -6,5 +6,8 @@ def index(request):
 
 
 def shop_page(request):
-    print('in view')
-    return render(request, 'shop-grid.html')
+    return render(request, 'product/shop-grid.html')
+
+
+def about_us(request):
+    return render(request, 'about_us.html')
