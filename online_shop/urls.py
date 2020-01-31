@@ -24,5 +24,6 @@ urlpatterns = [
     path('', index, name='index'),
     path('products/', include('product.urls')),
     path('blogs/', include('blog.urls')),
-    path('about-us', about_us, name='about_us')
+    path('about-us', about_us, name='about_us'),
+    path('accounts/', include('account.urls'))
 ]

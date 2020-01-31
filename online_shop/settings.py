@@ -53,7 +53,9 @@ INSTALLED_APPS = [
     'product',
     'blog',
     'account',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
 ]
 
 MIDDLEWARE = [
@@ -155,3 +157,16 @@ STATICFILES_DIRS = [
 # MEDIA FOLDER SETTINGS
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
+# AUTHENTIFICATION SETTINGS
+
+AUTH_USER_MODEL = 'account.User'
+
+
+# DJOSER SETTINGS
+
+DJOSER = {
+    'LOGIN_FIELD': 'email',
+    'USER_CREATE_PASSWORD_RETYPE': True
+}
