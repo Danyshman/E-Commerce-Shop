@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from product.views import index, about_us
+from product.views import index, about_us, contacts
 
 app_name = 'main'
 
@@ -24,6 +24,7 @@ urlpatterns = [
     path('', index, name='index'),
     path('products/', include('product.urls')),
     path('blogs/', include('blog.urls')),
-    path('about-us', about_us, name='about_us'),
-    path('accounts/', include('account.urls'))
+    path('about-us/', about_us, name='about_us'),
+    path('accounts/', include('account.urls')),
+    path('contacts/', contacts, name='contacts')
 ]

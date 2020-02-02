@@ -11,3 +11,7 @@ def shop_page(request):
 
 def about_us(request):
     return render(request, 'about_us.html')
+
+
+def contacts(request):
+    return render(request, 'contacts.html')
