@@ -12247,6 +12247,11 @@ a.nav-link:hover .media-tab-media {
     color: #4b566b
 }
 
+#custome_white {
+    color: #fff !important;
+}
+
+
 .nav-link-style>i {
     margin-top: -.125rem;
     vertical-align: middle
