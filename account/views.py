@@ -1,37 +1,51 @@
-from django.shortcuts import render
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
-from helpers.main import decode_bytes_to_dict
-import requests
-import json
-import base64
-
-base_url = "http://127.0.0.1:8000/accounts/users/"
+from django.shortcuts import render, redirect
+from django.contrib import messages, auth
+from .models import User
 
 
-@api_view(['POST'])
-def create_user(request):
+def create(request):
     if request.method == 'POST':
-        data = json.loads(request.body.decode("utf-8").replace("'", '"'))
-        res = requests.post(base_url, data=data)
-        return Response(data=res.content, status=res.status_code, template_name='index.html')
-    elif request.method=='GET':
-        return render(request, 'index.html')
+        email = request.data['email']
+        password = request.data['password']
+        re_password = request.data['re_password']
+
+        if password == re_password:
+            if User.objects.filter(email=email).exists():
+                messages.error(request, 'User with such Email is already exists!')
+            else:
+                user = User.objects.create_user(email, password)
+                user.save()
+                auth.login(request, user)
+                messages.success(request, 'Account successfully created!')
+                return redirect('profile')
+        else:
+            messages.error(request, 'Passwords do not match')
+            return redirect("index")
 
 
-@api_view(['GET'])
-def login_user(request):
-    if request.method == 'GET':
-        data = decode_bytes_to_dict(request.body)
-        credentials = "{}:{}".format(data.get('email'), data.get('password'))
-        encoded_bytes = base64.b64encode(credentials.encode("utf-8"))
-        encoded_credentials = str(encoded_bytes, "utf-8")
-        headers = {"Authorization": "Basic %s" % encoded_credentials}
-        res = requests.get(base_url + "me/", data=data, headers=headers)
-        print(res.content)
-        return Response(data=decode_bytes_to_dict(res.content), status=res.status_code,
-                        template_name='index.html')
+def login(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+        user = auth.authenticate(email=email, password=password)
+        if user:
+            auth.login(request, user)
+            messages.success(request, 'You are now logged in')
+            return redirect('index')
+        else:
+            messages.error(request, 'Invalid credentials')
+            return redirect('index')
 
 
-# def
+def logout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        messages.success(request, 'You are now logged out')
+        return redirect('index')
+
+
+
+
+
+
 
