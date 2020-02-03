@@ -54,9 +54,7 @@ INSTALLED_APPS = [
     'product',
     'blog',
     'account',
-    'rest_framework',
-    'rest_framework.authtoken',
-    'djoser',
+    'clearcache',
 ]
 
 MIDDLEWARE = [
