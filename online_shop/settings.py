@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     'product',
     'blog',
     'account',
-    'clearcache',
 ]
 
 MIDDLEWARE = [
