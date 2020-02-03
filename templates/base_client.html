@@ -158,8 +158,8 @@
                 {% if user.is_authenticated %}
                     <a class="navbar-tool ml-1 ml-lg-0 mr-n1 mr-lg-2" href="" data-toggle="modal">
                     <div class="navbar-tool-icon-box"><i class="navbar-tool-icon czi-user"></i></div>
-                    <div class="navbar-tool-text ml-n3"><small>Hello, username</small>My Account</div></a>
-                    <a class="nav-link-style d-flex align-items-center px-4 py-2 pb-1 text-white" href="javascript:{document.getElementById('logout').submit()}"><i class="czi-sign-out opacity-60 mr-2"></i>Log out</a>
+                    <div class="navbar-tool-text ml-n3 font-size-base"><small class="font-size-xs">Welcome, {{ user.username }}</small>My Account</div></a>
+                    <a class="nav-link-style d-flex align-items-center px-4 py-2 pt-4 text-white" href="javascript:{document.getElementById('logout').submit()}"><i class="czi-sign-out opacity-60 mr-2"></i>Log out</a>
                     <form action="{% url 'account:logout' %}" method="POST" id="logout">
                         {% csrf_token %}
                         <input type="hidden">
@@ -167,7 +167,7 @@
                 {% else %}
                     <a class="navbar-tool ml-1 ml-lg-0 mr-n1 mr-lg-2" href="#signin-modal" data-toggle="modal">
                     <div class="navbar-tool-icon-box"><i class="navbar-tool-icon czi-user"></i></div>
-                    <div class="navbar-tool-text ml-n3"><small>Hello, Sign in</small>My Account</div></a>
+                    <div class="navbar-tool-text ml-n3 font-size-base pt-1">Login</div></a>
                 {% endif %}
               <div class="navbar-tool dropdown ml-3"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="shop-cart.html"><span class="navbar-tool-label">4</span><i class="navbar-tool-icon czi-cart"></i></a><a class="navbar-tool-text" href="shop-cart.html"><small>My Cart</small>$265.00</a>
                 <!-- Cart dropdown-->
