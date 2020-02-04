@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, resolve_url
 from django.contrib import messages, auth
 from .models import User
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+import time
 
 
 def create(request):
@@ -18,10 +19,10 @@ def create(request):
                 user.save()
                 auth.login(request, user)
                 messages.success(request, 'Account successfully created!')
-                return redirect("account:user_profile")
+                return HttpResponseRedirect('/accounts/profile/')
         else:
             messages.error(request, 'Passwords do not match')
-            return redirect("index")
+            return redirect('index')
 
 
 def login(request):
@@ -32,10 +33,10 @@ def login(request):
         if user:
             auth.login(request, user)
             messages.success(request, 'You are now logged in')
-            return redirect('account:user_profile')
+            return HttpResponseRedirect('/accounts/profile/')
         else:
             messages.error(request, 'Invalid credentials')
-            return redirect('index')
+            return HttpResponseRedirect('/')
 
 
 def logout(request):
@@ -46,28 +47,33 @@ def logout(request):
 
 
 def user_profile(request):
-    if request.method == 'GET':
-        if request.user.is_authenticated:
+    if request.user.is_authenticated:
+        if request.method == 'GET':
             return render(request, 'account/account-profile.html')
-        else:
-            return redirect('index')
-    if request.method == 'POST':
-        data = dict(request.POST)
-        user = request.user
-        if data['new_password'] != '' and data['new_password'] == data['confirm_password']:
-            user.set_password(data['new_password'])
-        if data['username'] != '':
-            if User.objects.filter(username=data['username']).exists():
-                # SHOW ALERT SHUCH USERNAME ALREADY EXISTS
-                return redirect('index')
-            else:
-                user.__setattr__('username', data['username'])
-        for key, value in data.items():
-            if key != 'csrfmiddlewaretoken':
-                print(key, value)
-                user.__setattr__(key, value[0])
-        user.save()
-        return redirect('account:user_profile')
+
+        elif request.method == 'POST':
+            data = dict(request.POST)
+            user = request.user
+            if data['new_password'] == data['confirm_password']:
+                if data['new_password'] != '':
+                    data.pop('new_password')
+                    data.pop('confirm_password')
+                else:
+                    user.set_password(data['new_password'])
+            if data['username'] != '':
+                if User.objects.filter(username=data['username']).exists():
+                    # SHOW ALERT SHUCH USERNAME ALREADY EXISTS
+                    return HttpResponseRedirect('/accounts/profile/')
+                else:
+                    user.__setattr__('username', data['username'])
+                    data.pop('username')
+            if request.FILES:
+                user.avatar = request.FILES['avatar']
+            for key, value in data.items():
+                if key != 'csrfmiddlewaretoken' and key != 'new_password' and key != 'username':
+                    user.__setattr__(key, value[0])
+            user.save()
+            return render(request, 'account/account-profile.html')
 
 
 

@@ -37,6 +37,11 @@ class UserManager(BaseUserManager):
         return user
 
 
+def upload_user_image(instance, filename):
+    filename = 'avatar.'+filename.split('.')[1]
+    return "accounts/{user}/{filename}".format(user=instance, filename=filename)
+
+
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(verbose_name='email', max_length=255, unique=True)
     username = models.CharField(max_length=255, blank=True, null=True, unique=True)
@@ -46,6 +51,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     city = models.CharField(max_length=255, blank=True, null=True)
     address = models.CharField(max_length=255, blank=True, null=True)
     phone = models.CharField(max_length=255, blank=True, null=True)
+    avatar = models.ImageField(upload_to=upload_user_image, blank=True, null=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 

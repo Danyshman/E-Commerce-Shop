@@ -64,7 +64,7 @@
             <h6 class="font-size-base text-light mb-0">Update you profile details below:</h6><a class="btn btn-primary btn-sm" href="{% url 'index' %}"><i class="czi-home mr-2"></i>Home</a>
           </div>
           <!-- Profile form-->
-          <form method="POST" action="{% url 'account:user_profile' %}">
+          <form enctype="multipart/form-data" method="POST" action="{% url 'account:user_profile' %}">
               {% csrf_token %}
             <div class="bg-secondary rounded-lg p-4 mb-4">
               <div class="media align-items-center"><img src="{% static 'img/shop/account/avatar.jpg' %}" width="90" alt="Susan Gardner">
@@ -74,7 +74,7 @@
                         <div class="cz-file-drop-icon czi-cloud-upload"></div>
                             <span class="cz-file-drop-message">Drag and drop here to upload</span>
                             <input type="file" class="cz-file-drop-input" name="avatar">
-                            <button type="submit" class="cz-file-drop-btn btn btn-primary btn-sm">Or select file</button>
+                            <button type="button" class="cz-file-drop-btn btn btn-primary btn-sm">Or select file</button>
                     </div>
                   <div class="p mb-0 font-size-ms text-muted">Upload JPG, GIF or PNG image. 300 x 300 required.</div>
                 </div>
