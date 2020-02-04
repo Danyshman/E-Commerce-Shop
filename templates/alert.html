@@ -1,7 +1,7 @@
 {% if messages %}
     {% for message in messages %}
         <div id="message" class="container">
-            <div class="alert alert-{{ message.tags }} alert-dismissable alert-with-icon" role="alert">
+            <div class="alert alert-{{ message.tags }} alert-dismissible alert-with-icon" role="alert">
                 <button type="submit" class="close" data-dismiss="alert"><span aria-hidden="true">
                     &times;
                 </span></button>
@@ -15,7 +15,7 @@
                         <div class="alert-icon-box pr-2">
                             <i class="alert-icon czi-check-circle"></i>
                         </div>
-                        {{ message.tags|title }}:
+                        {{ message.tags|title }}
                     {% endif %}
                 </strong>
             {{ message }}

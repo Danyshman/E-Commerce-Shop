@@ -18,11 +18,11 @@ def create(request):
                 user = User.objects.create_user(email, password)
                 user.save()
                 auth.login(request, user)
-                messages.success(request, 'Account successfully created!')
+                messages.success(request, 'Account successfully created, please login!')
                 return HttpResponseRedirect('/accounts/profile/')
         else:
             messages.error(request, 'Passwords do not match')
-            return redirect('index')
+            return HttpResponseRedirect('/accounts/login/')
 
 
 def login(request):
@@ -36,7 +36,9 @@ def login(request):
             return HttpResponseRedirect('/accounts/profile/')
         else:
             messages.error(request, 'Invalid credentials')
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/accounts/login/')
+    if request.method == 'GET':
+        return render(request, 'index.html')
 
 
 def logout(request):
