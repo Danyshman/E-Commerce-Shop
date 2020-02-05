@@ -6,6 +6,7 @@ class Product(models.Model):
     description = models.CharField(max_length=555)
     base_price = models.PositiveIntegerField(default=0)
     discount = models.IntegerField(default=0)
+    final_price = models.IntegerField(default=0)
     in_stock = models.IntegerField(default=1)
     main_img = models.ImageField(blank=True, null=True)
     sub_img1 = models.ImageField(blank=True, null=True)
