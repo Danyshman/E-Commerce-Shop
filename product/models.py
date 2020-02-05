@@ -1,4 +1,5 @@
 from django.db import models
+from order.models import Order
 
 
 class Product(models.Model):
@@ -8,6 +9,7 @@ class Product(models.Model):
     discount = models.IntegerField(default=0)
     final_price = models.IntegerField(default=0)
     in_stock = models.IntegerField(default=1)
+    order = models.ForeignKey(Order, on_delete=models.DO_NOTHING, related_name='products', null=True)
     main_img = models.ImageField(blank=True, null=True)
     sub_img1 = models.ImageField(blank=True, null=True)
     sub_img2 = models.ImageField(blank=True, null=True)
