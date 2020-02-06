@@ -12251,6 +12251,12 @@ a.nav-link:hover .media-tab-media {
     color: #fff !important;
 }
 
+@media(max-width: 768px) {
+    #logout {
+        padding-top: 1rem !important;
+    }
+}
+
 
 .nav-link-style>i {
     margin-top: -.125rem;
