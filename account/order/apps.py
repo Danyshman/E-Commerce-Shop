@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class OrderConfig(AppConfig):
-    name = 'user.order'
+    name = 'account.order'

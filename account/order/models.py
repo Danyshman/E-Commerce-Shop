@@ -1,7 +1,7 @@
 from django.db import models
 import uuid
 from constants import ORDER_STATUS
-from user.models import User
+from account.models import User
 
 
 class Order(models.Model):

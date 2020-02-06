@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class WishListConfig(AppConfig):
-    name = 'user.wish_list'
+    name = 'account.wish_list'
