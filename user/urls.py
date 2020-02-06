@@ -1,7 +1,7 @@
-from django.urls import path, include
+from django.urls import path
 from .views import *
-from order.views import *
-from wish_list.views import *
+from user.order.views import *
+from user.wish_list.views import *
 
 app_name = 'account'
 
