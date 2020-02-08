@@ -67,7 +67,7 @@ def user_profile(request, *args, **kwargs):
                     # SHOW ALERT SUCH USERNAME ALREADY EXISTS
                     return redirect('index')
                 else:
-                    user.__setattr__('username', data['username'])
+                    user.__setattr__('username', data['username'][0])
                     data.pop('username')
             if request.FILES:
                 user.avatar = request.FILES['avatar']
