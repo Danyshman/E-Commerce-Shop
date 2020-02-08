@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 from product.views import index, about_us, contacts
 
-app_name = 'main'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +24,9 @@ urlpatterns = [
     path('products/', include('product.urls')),
     path('blogs/', include('blog.urls')),
     path('about-us/', about_us, name='about_us'),
-    path('accounts/', include('account.urls')),
+    path('user/', include('account.urls')),
     path('contacts/', contacts, name='contacts'),
+    path('user/<user_id>/support-tickets/', include('support_ticket.urls'), name='support_ticket'),
+    path('user/<user_id>/orders/', include('order.urls'), name='orders'),
+    path('user/<user_id>/wishlist/', include('wish_list.urls'), name='wishlist')
 ]

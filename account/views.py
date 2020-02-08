@@ -33,7 +33,7 @@ def login(request):
         if user:
             auth.login(request, user)
             messages.success(request, 'You are now logged in')
-            return HttpResponseRedirect('/accounts/profile/')
+            return HttpResponseRedirect('/user/{}/profile/'.format(user.id))
         else:
             messages.error(request, 'Invalid credentials')
             return HttpResponseRedirect('/accounts/login/')
@@ -48,7 +48,7 @@ def logout(request):
         return redirect('index')
 
 
-def user_profile(request):
+def user_profile(request, *args, **kwargs):
     if request.user.is_authenticated:
         if request.method == 'GET':
             return render(request, 'account/account-profile.html')
@@ -64,8 +64,8 @@ def user_profile(request):
                     user.set_password(data['new_password'])
             if data['username'] != '':
                 if User.objects.filter(username=data['username']).exists():
-                    # SHOW ALERT SHUCH USERNAME ALREADY EXISTS
-                    return HttpResponseRedirect('/accounts/profile/')
+                    # SHOW ALERT SUCH USERNAME ALREADY EXISTS
+                    return redirect('index')
                 else:
                     user.__setattr__('username', data['username'])
                     data.pop('username')
@@ -73,6 +73,7 @@ def user_profile(request):
                 user.avatar = request.FILES['avatar']
             for key, value in data.items():
                 if key != 'csrfmiddlewaretoken' and key != 'new_password' and key != 'username':
+                    print(request.POST)
                     user.__setattr__(key, value[0])
             user.save()
             return render(request, 'account/account-profile.html')

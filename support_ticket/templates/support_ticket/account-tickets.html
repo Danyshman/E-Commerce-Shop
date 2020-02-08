@@ -1,10 +1,8 @@
 {% extends 'base_client.html' %}
 {% load static %}
-
-
 {% block header %}
 <ul class="navbar-nav">
-                <li class="nav-item active"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'product:product_list'%}">Shop</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'about_us'%}">About Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'contacts' %}">Contacts</a></li>
@@ -15,7 +13,8 @@
 
 
 {% block body %}
-<div class="page-title-overlap bg-dark pt-4">
+ <!-- Page Title (Shop)-->
+    <div class="page-title-overlap bg-dark pt-4">
         <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
             <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
                 <nav aria-label="breadcrumb">
@@ -23,17 +22,17 @@
                         <li class="breadcrumb-item"><a class="text-nowrap" href="index.html"><i class="czi-home"></i>Home</a></li>
                         <li class="breadcrumb-item text-nowrap"><a href="#">Account</a>
                         </li>
-                        <li class="breadcrumb-item text-nowrap active" aria-current="page">Wishlist</li>
+                        <li class="breadcrumb-item text-nowrap active" aria-current="page">Support tickets</li>
                     </ol>
                 </nav>
             </div>
             <div class="order-lg-1 pr-lg-4 text-center text-lg-left">
-                <h1 class="h3 text-light mb-0">My wishlist</h1>
+                <h1 class="h3 text-light mb-0">Support tickets</h1>
             </div>
         </div>
     </div>
     <!-- Page Content-->
-    <div class="container pb-5 mb-2 mb-md-4">
+    <div class="container pb-5 mb-2 mb-md-3">
         <div class="row">
             <!-- Sidebar-->
             <aside class="col-lg-4 pt-4 pt-lg-0">
@@ -50,69 +49,73 @@
                         <h3 class="font-size-sm mb-0 text-muted">Dashboard</h3>
                     </div>
                     <ul class="list-unstyled mb-0">
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'account:order_list' user_id=user.id %}"><i class="czi-bag opacity-60 mr-2"></i>Orders<span class="font-size-sm text-muted ml-auto">1</span></a></li>
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3 active" href="{% url 'account:wish_list' user_id=user.id %}"><i class="czi-heart opacity-60 mr-2"></i>Wishlist<span class="font-size-sm text-muted ml-auto">3</span></a></li>
-                        <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-tickets.html"><i class="czi-help opacity-60 mr-2"></i>Support tickets<span class="font-size-sm text-muted ml-auto">1</span></a></li>
-                    </ul>
-                    <div class="bg-secondary px-4 py-3">
-                        <h3 class="font-size-sm mb-0 text-muted">Account settings</h3>
-                    </div>
-                    <ul class="list-unstyled mb-0">
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'account:user_profile' %}"><i class="czi-user opacity-60 mr-2"></i>Profile info</a></li>
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-address.html"><i class="czi-location opacity-60 mr-2"></i>Addresses</a></li>
-                        <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-payment.html"><i class="czi-card opacity-60 mr-2"></i>Payment methods</a></li>
-                        <li class="d-lg-none border-top mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-signin.html"><i class="czi-sign-out opacity-60 mr-2"></i>Sign out</a></li>
+                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'account:user_profile' user_id=user.id %}"><i class="czi-user opacity-60 mr-2"></i>Profile info</a></li>
+                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'orders:order_list' user_id=user.id %}"><i class="czi-bag opacity-60 mr-2"></i>Orders<span class="font-size-sm text-muted ml-auto">1</span></a></li>
+                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'wishlist:product_list' user_id=user.id %}"><i class="czi-heart opacity-60 mr-2"></i>Wishlist<span class="font-size-sm text-muted ml-auto">3</span></a></li>
+                        <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'support_ticket:ticket_list' user_id=user.id %}"><i class="czi-help opacity-60 mr-2"></i>Support tickets<span class="font-size-sm text-muted ml-auto">1</span></a></li>
                     </ul>
                 </div>
             </aside>
             <!-- Content  -->
             <section class="col-lg-8">
                 <!-- Toolbar-->
-                <div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
-                    <h6 class="font-size-base text-light mb-0">List of items you added to wishlist:</h6><a class="btn btn-primary btn-sm" href="{% url 'index' %}"><i class="czi-home mr-2"></i>Home</a>
+                <div class="d-flex justify-content-between align-items-center pt-lg-2 pb-4 pb-lg-5 mb-lg-3">
+                    <div class="form-inline">
+                        <label class="text-light opacity-75 text-nowrap mr-2 d-none d-lg-block" for="order-sort">Sort orders:</label>
+                        <select class="form-control custom-select" id="order-sort">
+                <option>All</option>
+                <option>Open</option>
+                <option>Closed</option>
+              </select>
+                    </div><a class="btn btn-primary btn-sm d-none d-lg-inline-block" href="account-signin.html"><i class="czi-sign-out mr-2"></i>Sign out</a>
                 </div>
-                <!-- Wishlist-->
-                <!-- Item-->
-                <div class="d-sm-flex justify-content-between mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
-                    <div class="media media-ie-fix d-block d-sm-flex text-center text-sm-left"><a class="d-inline-block mx-auto mr-sm-4" href="shop-single-v1.html" style="width: 10rem;"><img src="{% static 'img/shop/cart/02.jpg' %}" alt="Product"></a>
-                        <div class="media-body pt-2">
-                            <h3 class="product-title font-size-base mb-2"><a href="shop-single-v1.html">TH Jeans City Backpack</a></h3>
-                            <div class="font-size-sm"><span class="text-muted mr-2">Brand:</span>Tommy Hilfiger</div>
-                            <div class="font-size-sm"><span class="text-muted mr-2">Color:</span>Khaki</div>
-                            <div class="font-size-lg text-accent pt-2">$79.<small>50</small></div>
-                        </div>
-                    </div>
-                    <div class="pt-2 pl-sm-3 mx-auto mx-sm-0 text-center">
-                        <button class="btn btn-outline-danger btn-sm" type="button"><i class="czi-trash mr-2"></i>Remove</button>
-                    </div>
+                <!-- Tickets list-->
+                <div class="table-responsive font-size-md">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>Ticket Subject</th>
+                                <th>Date Submitted | Updated</th>
+                                <th>Type</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="py-3"><a class="nav-link-style font-weight-medium" href="account-single-ticket.html">My new ticket</a></td>
+                                <td class="py-3">09/27/2019 | 09/30/2019</td>
+                                <td class="py-3">Website problem</td>
+                                <td class="py-3"><span class="badge badge-warning m-0">High</span></td>
+                                <td class="py-3"><span class="badge badge-success m-0">Open</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-3"><a class="nav-link-style font-weight-medium" href="account-single-ticket.html">Another ticket</a></td>
+                                <td class="py-3">08/21/2019 | 08/23/2019</td>
+                                <td class="py-3">Partner request</td>
+                                <td class="py-3"><span class="badge badge-info m-0">Medium</span></td>
+                                <td class="py-3"><span class="badge badge-secondary m-0">Closed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-3"><a class="nav-link-style font-weight-medium" href="account-single-ticket.html">Yet another ticket</a></td>
+                                <td class="py-3">11/19/2018 | 11/20/2018</td>
+                                <td class="py-3">Complaint</td>
+                                <td class="py-3"><span class="badge badge-danger m-0">Urgent</span></td>
+                                <td class="py-3"><span class="badge badge-secondary m-0">Closed</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-3"><a class="nav-link-style font-weight-medium" href="account-single-ticket.html">My old ticket</a></td>
+                                <td class="py-3">06/19/2018 | 06/20/2018</td>
+                                <td class="py-3">Info inquiry</td>
+                                <td class="py-3"><span class="badge badge-success m-0">Low</span></td>
+                                <td class="py-3"><span class="badge badge-secondary m-0">Closed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <!-- Item-->
-                <div class="d-sm-flex justify-content-between my-4 pb-3 pb-sm-2 border-bottom">
-                    <div class="media media-ie-fix d-block d-sm-flex text-center text-sm-left"><a class="d-inline-block mx-auto mr-sm-4" href="shop-single-v1.html" style="width: 10rem;"><img src="{% static 'img/shop/cart/03.jpg' %}" alt="Product"></a>
-                        <div class="media-body pt-2">
-                            <h3 class="product-title font-size-base mb-2"><a href="shop-single-v1.html">3-Color Sun Stash Hat</a></h3>
-                            <div class="font-size-sm"><span class="text-muted mr-2">Brand:</span>The North Face</div>
-                            <div class="font-size-sm"><span class="text-muted mr-2">Color:</span>Pink / Beige / Dark blue</div>
-                            <div class="font-size-lg text-accent pt-2">$22.<small>50</small></div>
-                        </div>
-                    </div>
-                    <div class="pt-2 pl-sm-3 mx-auto mx-sm-0 text-center">
-                        <button class="btn btn-outline-danger btn-sm" type="button"><i class="czi-trash mr-2"></i>Remove</button>
-                    </div>
-                </div>
-                <!-- Item-->
-                <div class="d-sm-flex justify-content-between mt-4">
-                    <div class="media media-ie-fix d-block d-sm-flex text-center text-sm-left"><a class="d-inline-block mx-auto mr-sm-4" href="shop-single-v1.html" style="width: 10rem;"><img src="{% static 'img/shop/cart/04.jpg' %}" alt="Product"></a>
-                        <div class="media-body pt-2">
-                            <h3 class="product-title font-size-base mb-2"><a href="shop-single-v1.html">Cotton Polo Regular Fit</a></h3>
-                            <div class="font-size-sm"><span class="text-muted mr-2">Size:</span>42</div>
-                            <div class="font-size-sm"><span class="text-muted mr-2">Color:</span>Light blue</div>
-                            <div class="font-size-lg text-accent pt-2">$9.<small>00</small></div>
-                        </div>
-                    </div>
-                    <div class="pt-2 pl-sm-3 mx-auto mx-sm-0 text-center">
-                        <button class="btn btn-outline-danger btn-sm" type="button"><i class="czi-trash mr-2"></i>Remove</button>
-                    </div>
+                <hr class="mb-4">
+                <div class="text-right">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#open-ticket">Submit new ticket</button>
                 </div>
             </section>
         </div>
@@ -272,8 +275,9 @@
     <!-- Toolbar for handheld devices-->
     <div class="cz-handheld-toolbar">
         <div class="d-table table-fixed w-100"><a class="d-table-cell cz-handheld-toolbar-item" href="account-wishlist.html"><span class="cz-handheld-toolbar-icon"><i class="czi-heart"></i></span><span class="cz-handheld-toolbar-label">Wishlist</span></a><a class="d-table-cell cz-handheld-toolbar-item"
-                                                                                                                                                                                                                                                                  href="#navbarCollapse" data-toggle="collapse" onclick="window.scrollTo(0, 0)"><span class="cz-handheld-toolbar-icon"><i class="czi-menu"></i></span><span class="cz-handheld-toolbar-label">Menu</span></a><a class="d-table-cell cz-handheld-toolbar-item"
+                href="#navbarCollapse" data-toggle="collapse" onclick="window.scrollTo(0, 0)"><span class="cz-handheld-toolbar-icon"><i class="czi-menu"></i></span><span class="cz-handheld-toolbar-label">Menu</span></a><a class="d-table-cell cz-handheld-toolbar-item"
                 href="shop-cart.html"><span class="cz-handheld-toolbar-icon"><i class="czi-cart"></i><span class="badge badge-primary badge-pill ml-1">4</span></span><span class="cz-handheld-toolbar-label">$265.00</span></a>
         </div>
     </div>
+
 {% endblock %}
