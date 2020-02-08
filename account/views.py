@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, resolve_url
 from django.contrib import messages, auth
 from .models import User
 from django.http import HttpResponse, HttpResponseRedirect
-import time
 
 
 def create(request):
@@ -77,6 +76,12 @@ def user_profile(request, *args, **kwargs):
                     user.__setattr__(key, value[0])
             user.save()
             return render(request, 'account/account-profile.html')
+
+
+def wishlist(request, *args, **kwargs):
+    if request.method == 'GET':
+        if request.user.is_authenticated:
+            return render(request, 'account/account-wishlist.html')
 
 
 
