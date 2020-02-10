@@ -40,7 +40,7 @@ class UserManager(BaseUserManager):
 
 def upload_user_image(instance, filename):
     filename = 'avatar.'+filename.split('.')[1]
-    return "accounts/{user}/{filename}".format(user=instance, filename=filename)
+    return "users/{user}/avatar/{filename}".format(user=instance, filename=filename)
 
 
 class User(AbstractBaseUser, PermissionsMixin):
