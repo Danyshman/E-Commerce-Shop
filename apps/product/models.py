@@ -1,6 +1,4 @@
 from django.db import models
-from django.conf import settings
-from order.models import Order
 
 
 class Product(models.Model):
@@ -8,10 +6,7 @@ class Product(models.Model):
     description = models.CharField(max_length=555)
     base_price = models.PositiveIntegerField(default=0)
     discount = models.IntegerField(default=0)
-    final_price = models.IntegerField(default=0)
     in_stock = models.IntegerField(default=1)
-    wishlist = models.ManyToManyField(settings.AUTH_USER_MODEL)
-    orders = models.ManyToManyField(Order)
     main_img = models.ImageField(blank=True, null=True)
     sub_img1 = models.ImageField(blank=True, null=True)
     sub_img2 = models.ImageField(blank=True, null=True)

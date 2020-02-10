@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class SupportTicketConfig(AppConfig):
-    name = 'support_ticket'
+    name = 'apps.support_ticket'

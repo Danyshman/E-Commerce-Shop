@@ -2,6 +2,7 @@ from django.db import models
 import uuid
 from constants import ORDER_STATUS
 from django.conf import settings
+from apps.product.models import Product
 
 
 class Order(models.Model):
@@ -10,4 +11,5 @@ class Order(models.Model):
     status = models.CharField(max_length=255, choices=ORDER_STATUS, null=False, default='In Progress')
     total_price = models.PositiveIntegerField(blank=True, null=True)
     date_purchased = models.DateField(auto_now_add=True)
+    products = models.ManyToManyField(Product)
 
