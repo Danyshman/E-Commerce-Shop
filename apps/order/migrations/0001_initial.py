@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('date_purchased', models.DateField(auto_now_add=True)),
                 ('status', models.CharField(choices=[('Progress', 'In Progress'), ('Canceled', 'Canceled'), ('Delayed', 'Delayed'), ('Delivered', 'Delivered')], default='In Progress', max_length=255)),
                 ('total_price', models.PositiveIntegerField(blank=True, null=True)),
-                ('products', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, related_name='ordered_products', to='apps.product.Product')),
+                ('products', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, related_name='ordered_products', to='product.Product')),
             ],
         ),
     ]

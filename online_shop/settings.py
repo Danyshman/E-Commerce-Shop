@@ -166,3 +166,7 @@ MESSAGE_TAGS = {message_constants.DEBUG: 'debug',
                 message_constants.SUCCESS: 'success',
                 message_constants.WARNING: 'warning',
                 message_constants.ERROR: 'danger'}
+
+# DJANGO.AUTH SETTINGS
+
+LOGIN_URL = '127.0.0.1:8000/login/'
