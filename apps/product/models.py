@@ -7,18 +7,15 @@ class Product(models.Model):
     base_price = models.PositiveIntegerField(default=0)
     discount = models.IntegerField(default=0)
     in_stock = models.IntegerField(default=1)
+    target_sex = models.CharField(max_length=2, blank=True, null=True)
+    sizes = models.CharField(max_length=255, blank=True, null=True)
+    is_available = models.BooleanField(default=True)
+    product_tags = models.CharField(max_length=512, blank=True, null=True)
     main_img = models.ImageField(blank=True, null=True)
     sub_img1 = models.ImageField(blank=True, null=True)
     sub_img2 = models.ImageField(blank=True, null=True)
     sub_img3 = models.ImageField(blank=True, null=True)
     sub_img4 = models.ImageField(blank=True, null=True)
-
-
-class Clothes(Product):
-    target_sex = models.CharField(max_length=2, blank=True, null=True)
-    sizes = models.CharField(max_length=255, blank=True, null=True)
-    is_available = models.BooleanField(default=True)
-    product_tags = models.CharField(max_length=255, blank=True, null=True)
 
 
 

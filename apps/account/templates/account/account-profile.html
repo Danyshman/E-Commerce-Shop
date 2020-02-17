@@ -50,9 +50,9 @@
               <h3 class="font-size-sm mb-0 text-muted">Dashboard</h3>
             </div>
             <ul class="list-unstyled mb-0">
-              <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'account:user_profile' user_id=user.id %}"><i class="czi-user opacity-60 mr-2"></i>Profile info</a></li>
+              <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'user:user_profile' user_id=user.id %}"><i class="czi-user opacity-60 mr-2"></i>Profile info</a></li>
               <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'orders:order_list' user_id=user.id %}"><i class="czi-bag opacity-60 mr-2"></i>Orders<span class="font-size-sm text-muted ml-auto">1</span></a></li>
-              <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'account:user_wishlist' user_id=user.id %}"><i class="czi-heart opacity-60 mr-2"></i>Wishlist<span class="font-size-sm text-muted ml-auto">3</span></a></li>
+              <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'user:user_wishlist' user_id=user.id %}"><i class="czi-heart opacity-60 mr-2"></i>Wishlist<span class="font-size-sm text-muted ml-auto">3</span></a></li>
               <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'support_ticket:ticket_list' user_id=user.id %}"><i class="czi-help opacity-60 mr-2"></i>Support tickets<span class="font-size-sm text-muted ml-auto">1</span></a></li>
             </ul>
           </div>
@@ -64,7 +64,7 @@
             <h6 class="font-size-base text-light mb-0">Update you profile details below:</h6><a class="btn btn-primary btn-sm" href="{% url 'index' %}"><i class="czi-home mr-2"></i>Home</a>
           </div>
           <!-- Profile form-->
-          <form enctype="multipart/form-data" method="POST" action="{% url 'account:user_profile' user_id=user.id %}">
+          <form enctype="multipart/form-data" method="POST" action="{% url 'user:user_profile' user_id=user.id %}">
               {% csrf_token %}
             <div class="bg-secondary rounded-lg p-4 mb-4">
               <div class="media align-items-center"><img src="{% static 'img/shop/account/avatar.jpg' %}" width="90" alt="Susan Gardner">

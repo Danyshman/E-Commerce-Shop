@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, resolve_url
+from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from .models import User
 from django.http import HttpResponse, HttpResponseRedirect
@@ -35,7 +35,7 @@ def login(request):
             return HttpResponseRedirect('/user/{}/profile/'.format(user.id))
         else:
             messages.error(request, 'Invalid credentials')
-            return HttpResponseRedirect('/accounts/login/')
+            return HttpResponseRedirect('/user/login/')
     if request.method == 'GET':
         return render(request, 'index.html')
 

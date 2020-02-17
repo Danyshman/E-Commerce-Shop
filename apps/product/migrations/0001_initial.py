@@ -28,15 +28,4 @@ class Migration(migrations.Migration):
                 ('sub_img4', models.ImageField(blank=True, null=True, upload_to='')),
             ],
         ),
-        migrations.CreateModel(
-            name='Clothes',
-            fields=[
-                ('product_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='product.Product')),
-                ('target_sex', models.CharField(blank=True, max_length=2, null=True)),
-                ('sizes', models.CharField(blank=True, max_length=255, null=True)),
-                ('is_available', models.BooleanField(default=True)),
-                ('product_tags', models.CharField(blank=True, max_length=255, null=True)),
-            ],
-            bases=('product.product',),
-        ),
     ]

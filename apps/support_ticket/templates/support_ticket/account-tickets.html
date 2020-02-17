@@ -54,7 +54,7 @@
                 </div>
                 <div class="modal-body tab-content py-4">
                     {% include 'alert.html' %}
-                    <form method="POST" action="{% url 'account:login' %}" class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">
+                    <form method="POST" action="{% url 'user:login' %}" class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">
                         {% csrf_token %}
                         <div class="form-group">
                             <label for="si-email">Email address</label>
@@ -78,7 +78,7 @@
                         </div>
                         <button class="btn btn-primary btn-block btn-shadow" type="submit">Sign in</button>
                     </form>
-                    <form method="POST" action="{% url 'account:create' %}" class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
+                    <form method="POST" action="{% url 'user:create' %}" class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
                         {% csrf_token %}
                         <div class="form-group">
                             <label for="su-email">Email address</label>
@@ -402,9 +402,9 @@
                         <h3 class="font-size-sm mb-0 text-muted">Dashboard</h3>
                     </div>
                     <ul class="list-unstyled mb-0">
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'account:user_profile' user_id=user.id %}"><i class="czi-user opacity-60 mr-2"></i>Profile info</a></li>
+                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'user:user_profile' user_id=user.id %}"><i class="czi-user opacity-60 mr-2"></i>Profile info</a></li>
                         <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'orders:order_list' user_id=user.id %}"><i class="czi-bag opacity-60 mr-2"></i>Orders<span class="font-size-sm text-muted ml-auto">1</span></a></li>
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'account:user_wishlist' user_id=user.id %}"><i class="czi-heart opacity-60 mr-2"></i>Wishlist<span class="font-size-sm text-muted ml-auto">3</span></a></li>
+                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'user:user_wishlist' user_id=user.id %}"><i class="czi-heart opacity-60 mr-2"></i>Wishlist<span class="font-size-sm text-muted ml-auto">3</span></a></li>
                         <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'support_ticket:ticket_list' user_id=user.id %}"><i class="czi-help opacity-60 mr-2"></i>Support tickets<span class="font-size-sm text-muted ml-auto">1</span></a></li>
                     </ul>
                 </div>
