@@ -8,12 +8,6 @@ $(function (){
         $('#upload-avatar').slideDown(1000);
     });
 
-    $(window).on('load', () => {
-        const url = window.location.pathname;
-        if(url === "/accounts/login/")
-         $('#login-button').click();
-    })
-
     $(document).on('click', '.btn-wishlist', function(e) {
         e.preventDefault();
         const id = $(this).data('id');
@@ -23,7 +17,6 @@ $(function (){
             dataType: 'json',
             data: {},
             success: function (data) {
-                document.location.href='https://127.0.0.1/products/'
             }
         })
     })

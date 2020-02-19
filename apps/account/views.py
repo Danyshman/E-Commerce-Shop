@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.contrib import messages, auth
 from .models import User
 from django.http import HttpResponse, HttpResponseRedirect
@@ -6,22 +6,26 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 def create(request):
     if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
-        re_password = request.POST['re_password']
-        if password == re_password:
-            if User.objects.filter(email=email).exists():
+        data = dict(request.POST)
+        if data['password'][0] == data['re_password'][0]:
+            if User.objects.filter(email=data['email'][0]).exists():
                 messages.error(request, 'User with such Email is already exists!')
                 return HttpResponse()
-            else:
-                user = User.objects.create_user(email, password)
-                user.save()
-                auth.login(request, user)
-                messages.success(request, 'Account successfully created, please login!')
-                return HttpResponseRedirect('/accounts/profile/')
+            if data['username'][0] != '':
+                if User.objects.filter(username=data['username'][0]).exists():
+                    # SHOW ALERT SUCH USERNAME ALREADY EXISTS
+                    return redirect('index')
+            user = User.objects.create_user(data['email'][0], data['password'][0])
+            for key, value in data.items():
+                if key != 'csrfmiddlewaretoken' and key != 'new_password' and key != 'username':
+                    user.__setattr__(key, value[0])
+            user.save()
+            auth.login(request, user)
+            messages.success(request, 'Account successfully created, please login!')
+            return redirect('user:user_profile', user_id=user.id)
         else:
             messages.error(request, 'Passwords do not match')
-            return HttpResponseRedirect('/accounts/login/')
+            return redirect('user:login')
 
 
 def login(request):
@@ -37,7 +41,7 @@ def login(request):
             messages.error(request, 'Invalid credentials')
             return HttpResponseRedirect('/user/login/')
     if request.method == 'GET':
-        return render(request, 'index.html')
+        return render(request, 'account/account-signin.html')
 
 
 def logout(request):

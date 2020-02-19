@@ -13,12 +13,12 @@ def wishlist(request, product_id):
         product = get_object_or_404(Product, id=product_id)
         if product.user_set.filter(id=user.id):
             product.user_set.remove(user)
-            data = {'message': 'product removed from wishlist successfully'}
-            return HttpResponse(data, content_type='application/json')
+            data = {"toggle":0,'message': 'product removed from wishlist successfully'}
+            return HttpResponse(json.dumps(data), content_type='application/json')
         else:
             user.wishlist.add(get_object_or_404(Product, id=product_id))
-            data = {'message': 'product added to wishlist successfully'}
-            return HttpResponse(data, content_type='application/json')
+            data = {"toggle":1,'message': 'product added to wishlist successfully'}
+            return HttpResponse(json.dumps(data), content_type='application/json')
 
 
 
